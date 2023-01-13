@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+	<t t-name="hr_dashboard_app_ent.Dashboard">
+		<div class="o_dashboards" style="height: 100%;">
+			<div class="o_helpdesk_dashboard o_website_dashboard" style="height: 100%;">
+				<div class="o_dashboard_common" style="height: 100%;">
+					<div class="container o_dashboard_stage" style="background-color:#e8e8e8;margin-top: 20px;margin-bottom: 20px;"/>
+				</div>
+			</div>
+		</div>
+	</t>
+	<t t-name="hr_dashboard_app_ent.dashboard_view">
+		<div class="dashboard_data" style="color:#1b2b54;">
+			<div>
+				<br/>
+				<b><p style="margin-bottom: 3rem;font-size: 25px;color:#1b2b54;">Welcome <t t-esc="widget.user"/></p></b>
+			</div>
+			<div class="row">
+				<div class="column" style="cursor: pointer;">
+					<div class="card-view">
+						<h3 class='name'>Attendance</h3>
+						<i class="fa fa-calendar" style="float: left;font-size: 24px;margin-top: 2px;color: green;"></i>
+						<span><h1 style="max-width: 0px;margin-left: 77px;"><t t-esc="widget.count.attendance"/></h1>
+						</span>
+					</div>
+				</div>
+
+				<div class="column" style="cursor: pointer;">
+					<div class="card-view">
+						<h3 class='name'>Contracts</h3>
+						<i class="fa fa-file" style="float: left;font-size: 24px;margin-top: 2px; color: blue;"></i>
+						<span><h1 style="max-width: 0px;margin-left: 77px;"><t t-esc="widget.count.contract"/></h1></span>
+					</div>
+				</div>
+			  
+				<div class="column" style="cursor: pointer;">
+					<div class="card-view">
+						<h3 class='name'>Expenses</h3>
+						<i class="fa fa-money" style="float: left;font-size: 24px;margin-top: 2px;color: blueviolet;"></i>
+						<span><h1 style="max-width: 0px;margin-left: 60px;"><t t-esc="widget.count.expense"/></h1></span>
+					</div>
+				</div>
+			  
+				<div class="column" style="cursor: pointer;">
+					<div class="card-view">
+						<h3 class='name'>Leaves</h3>
+						<i class="fa fa-user-circle-o" style="float: left;font-size: 24px;margin-top: 2px;color: teal;"></i>
+						<span><h1 style="max-width: 0px;margin-left: 54px;"><t t-esc="widget.leave_total.leave_approved"/>/<t t-esc="widget.leave_total.leave_allocated"/></h1></span>
+					</div>
+				</div>
+
+				<div class="column" style="cursor: pointer;">
+					<div class="card-view">
+						<h3 class='name'>Payslip</h3>
+						<i class="fa fa-file-o" style="float: left;font-size: 24px;margin-top: 2px;color: sienna;"></i>
+						<span><h1 style="max-width: 0px;margin-left: 77px;"><t t-esc="widget.count.payslip"/></h1></span>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-xs-4" style="padding: 0 10px;width: 33.33%;">
+					<div class="card">
+						<div class="view">
+							<h3 class="announcement">Announcement</h3>
+							<div class="scrollbar" id="scrollbar" style="height:150px;position: relative;vertical-align:middle;">
+								<t t-foreach="widget.announcement" t-as="announcement">
+									<div class="scrollbar" style="border: 1px darkgrey solid;border-radius: 6px;height: 80px;text-align: left;padding: 10px;margin-top: 13px;position: relative;" id="scrollbar">
+										<t t-esc="widget.announcement[announcement]"/>
+										<span style="color:gray;"><t t-esc="announcement"/></span>
+									</div>
+								</t>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4" style="padding: 0 10px;width: 33.33%;">
+					<div class="card">
+						<div class="view birthday_list">
+							<h3 class="absolute">Wish</h3>
+							<div class="form-group">
+								<div class="datepicker date input-group p-0 shadow-sm">
+									<input type="text" placeholder="Chooose a birthdate" style="height: 0px;" class="form-control py-4 px-4" id="BirthDate"/>
+									<div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
+								</div>
+							</div>
+							<div class="scrollbar birth_list" id="scrollbar" style='position:relative;height: 94px;bottom: 22px;'>
+								<t t-foreach="widget.birthday" t-as="birthday">
+									<div class="" style="text-align: left;padding-bottom: 10px;border-bottom: 1px solid darkgray;">
+										<b><t t-esc='widget.birthday[birthday]'/></b>
+									</div>
+								</t>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4" style="padding: 0 10px;width: 33.33%;">
+					<div class="card card-flip">
+						<div class="card-front">
+							<div class="card-body" style="background-color:#f1f1f1 !important;height:20px;">
+								<h3 class="leaves" style="bottom: 15px;">Leaves</h3>
+								<div class="row" style="border-top: 1px darkgray solid;border-bottom: 1px darkgray solid;max-width: 100%;height: 140px;">
+									<div class="col-xs-4" style="width: 50%;border-right: 1px darkgray solid;padding: 10px;">
+										<b><span t-esc="widget.leaves_count.pending" style="font-size:20px;"></span></b><br/>
+										<span>Pending</span>
+									</div>
+									<div class="col-xs-4" style="width: 50%;padding: 10px;">
+										<b><span t-esc="widget.leaves_count.refused" style="font-size:20px;"></span></b><br/>
+										<span>Refused</span>
+									</div>
+									<div class="col-xs-4" style="width: 50%;border-right: 1px darkgray solid;border-top: 1px darkgray solid;padding: 10px;">
+										<b><span t-esc="widget.leaves_count.cancelled" style="font-size:20px;"></span></b><br/>
+										<span>Cancelled</span>
+									</div>
+									<div class="col-xs-4" style="width: 50%;border-top: 1px darkgray solid;padding: 10px;">
+										<b><span t-esc="widget.leaves_count.approved" style="font-size:20px;"></span></b><br/>
+										<span>Approved</span>
+									</div>
+								</div>
+								<br/><br/><br/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br/><br/>
+			<div class="row">
+				<div class="col-xs-4" style="padding: 0 10px;width: 50%;">
+					<div class="card">
+						<h3 class="model" style="position:absolute;left: 40%;">Payslips</h3><br/>
+						<button class="btn btn-secondary form_view" style="position: relative;width: 35px;left: 92%;bottom: 21px;"><i class="fa fa-plus"/></button> 
+						<div class="view scrollbar" id="scrollbar" style="height:100px">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">Number</th>
+										<th scope="col">Date From</th>
+										<th scope="col">Date To</th>
+										<th scope="col">State</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="widget.payslip" t-as="pay">
+										<tr>
+											<td><span t-esc="widget.payslip[pay]['number']"/></td>
+											<td><span t-esc="widget.payslip[pay]['date_from']"/></td>
+											<td><span t-esc="widget.payslip[pay]['date_to']"/></td>
+											<td><span class="badge badge-pill badge-info" style="font-size: 80%;padding: 5px 5px;" t-esc="widget.payslip[pay]['state']"/></td>
+										</tr>
+									</t>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4" style="padding: 0 10px;width: 50%;">
+					<div class="card" style="height">
+						<h3 class="model" style="position:absolute;left: 40%;">Expenses</h3><br/>
+						<button class="btn btn-secondary form_view" style="position: relative;width: 35px;left: 92%;bottom: 21px;"><i class="fa fa-plus"/></button> 
+						<div class="view scrollbar" id="scrollbar" style="height:100px;">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">Date</th>
+										<th scope="col">Description</th>
+										<th scope="col">Total</th>
+										<th scope="col">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="widget.expense" t-as="expense">
+										<tr>
+											<td><span t-esc="widget.expense[expense]['date']"/></td>
+											<td><span t-esc="widget.expense[expense]['name']"/></td>
+											<td><span t-esc="widget.expense[expense]['total']"/></td>
+											<td><span class="badge badge-pill badge-info" style="font-size: 80%;padding: 5px 5px;background-color: #ffc107;" t-esc="widget.expense[expense]['state']"/></td>
+										</tr>
+									</t>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4" style="padding: 0 10px;width: 50%;">
+					<div class="card">
+						<h3 class="model" style="position:absolute;left: 40%;">Attendance</h3><br/>
+						<button class="btn btn-secondary form_view" style="position: relative;width: 35px;left: 92%;bottom: 21px;"><i class="fa fa-plus"/></button> 
+						<div class="view scrollbar" id="scrollbar" style="height:100px;">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">Date</th>
+										<th scope="col">Check In</th>
+										<th scope="col">Check Out</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="widget.attendance" t-as="attendance">
+										<tr>
+											<td><span t-esc="widget.attendance[attendance]['date']"/></td>
+											<td><span t-esc="widget.attendance[attendance]['check_in']"/></td>
+											<td><span t-esc="widget.attendance[attendance]['check_out']"/></td>
+										</tr>
+									</t>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4" style="padding: 0 10px;width: 50%;">
+					<div class="card">
+						<h3 class="model" style="position:absolute;left: 40%;">Leaves</h3><br/>
+						<button class="btn btn-secondary form_view" style="position: relative;width: 35px;left: 92%;bottom: 21px;"><i class="fa fa-plus"/></button> 
+						<div class="view scrollbar" id="scrollbar" style="height:100px;">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">Request Date</th>
+										<th scope="col">Request Date</th>
+										<th scope="col">Leave Type</th>
+										<th scope="col">Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="widget.leaves" t-as="leaves">
+										<tr>
+											<td><span t-esc="widget.leaves[leaves]['request_out']"/></td>
+											<td><span t-esc="widget.leaves[leaves]['request_in']"/></td>
+											<td><span t-esc="widget.leaves[leaves]['leave_type']"/></td>
+											<td><span class="badge badge-pill badge-info" style="font-size: 80%;padding: 5px 5px;background-color: #28a745;" t-esc="widget.leaves[leaves]['state']"/></td>
+										</tr>
+									</t>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br/><br/>
+		</div>
+	</t>
+	<t t-name="hr_dashboard_app_ent.birthday_list">
+		<div class="scrollbar birth_list" id="scrollbar" style='position:relative;height: 94px;bottom: 22px;'>
+			<t t-foreach="widget.birthday" t-as="birthday">
+				<div class="" style="text-align: left;padding-bottom: 10px;border-bottom: 1px solid darkgray;">
+					<b><t t-esc='widget.birthday[birthday]'/></b>
+				</div>
+			</t>
+		</div>
+	</t>
+</templates>

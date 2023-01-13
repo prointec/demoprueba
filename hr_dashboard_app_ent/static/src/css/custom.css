@@ -1,0 +1,155 @@
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 20%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.fa-user-clock:before {
+  content: "\f4fd";
+}
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  height: 200px;
+}
+.card-view {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+h3.absolute {
+  position: relative;
+  padding-left: 0px;
+}
+
+h3.announcement {
+  position: relative;
+  /*padding-left: 0px;*/
+}
+h3.leaves {
+  position: relative;
+  /*padding-left: 0px;*/
+}
+h3.anniversary {
+  position: relative;
+  /*padding-left: 0px;*/
+}
+h3.leaves:before {
+  content: "\F0F4";
+  font-family: fontAwesome;
+  position: absolute;
+  left: 38px;  
+  top: 0px;
+}
+h3.announcement:before {
+  content: "\f0a1";
+  font-family: fontAwesome;
+  position: absolute;
+  left: 38px;  
+  top: 0px;
+}
+h3.anniversary:before {
+  content: "\f0a1";
+  font-family: fontAwesome;
+  position: absolute;
+  left: 38px;  
+  top: 0px;
+}
+
+h3.absolute:before {
+  content: "\f06b";
+  font-family: fontAwesome;
+  position: absolute;
+  left: 74px;  
+  top: 0px;
+}
+
+.datepicker td, .datepicker th {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.85rem;
+}
+
+.datepicker {
+    margin-bottom: 3rem;
+}
+.input-group {
+    border-radius: 30rem;
+}
+
+input.form-control {
+    border-radius: 30rem 0 0 30rem;
+    border: none;
+}
+
+input.form-control:focus {
+    box-shadow: none;
+}
+
+input.form-control::placeholder {
+    font-style: italic;
+}
+
+.input-group-text {
+    border-radius: 0 30rem 30rem 0;
+    border: none;
+}
+
+.datepicker-dropdown {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.scrollbar
+{
+  /*margin-left: 30px;*/
+  /*float: left;*/
+  /*height: 300px;*/
+  /*width: 65px;*/
+  background: #F5F5F5;
+  overflow-y: scroll;
+  /*margin-bottom: 25px;*/
+}
+
+#scrollbar::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+#scrollbar::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+#scrollbar::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}

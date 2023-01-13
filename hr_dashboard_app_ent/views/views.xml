@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_back" inherit_id="web.assets_backend" name="Backend Assets">
+            <xpath expr="//script[last()]" position="after">
+                <script type="text/javascript" src="/hr_dashboard_app_ent/static/src/js/dashboard.js"></script>
+                <script type="text/javascript" src="/hr_dashboard_app_ent/static/src/lib/bootstrap-datepicker.js"></script>
+                <script type="text/javascript" src="/hr_dashboard_app_ent/static/src/lib/bootstrap-datepicker.min.js"></script>
+                <link rel='stylesheet' href="/hr_dashboard_app_ent/static/src/css/bootstrap-datepicker.css"></link>
+                <link rel='stylesheet' href="/hr_dashboard_app_ent/static/src/css/custom.css"></link>
+            </xpath>
+        </template>
+
+        <record id="hr_announcement_form_view" model="ir.ui.view">
+            <field name="name">HR announcement</field>
+            <field name="model">hr.announcement</field>
+            <field name="arch" type="xml">
+              <form string="Employee">
+                  <sheet>
+                    <div class="oe_button_box" name="button_box">
+                       <button name="toggle_active" type="object" groups="base.group_user" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                      </div>
+                      <group>
+                          <field name="name" required='1'/>
+                          <field name="announcement_date" required='1'/>
+                          <field name="sequence"/>
+                      </group>
+                  </sheet>
+              </form>
+            </field>
+        </record>
+
+        <record id="hr_announcement_tree_view" model="ir.ui.view" >
+            <field name="name">HR Announcement</field>
+            <field name="model">hr.announcement</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="announcement_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_announcement_action_window" model="ir.actions.act_window" >
+            <field name="name">Announcement</field>
+            <field name="res_model">hr.announcement</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record id="hr_leave_view" model="ir.ui.view">
+            <field name="name">hr.leave</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree_my"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='holiday_type']" position="replace">
+                    <field name="employee_name"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_dashboard" model="ir.actions.client">
+            <field name="name">HR Dashboard</field>
+            <field name="tag">hr_dashboard</field>
+        </record>
+
+        <record id="ir_actions_server_hr_dashboard" model="ir.actions.server">
+            <field name="name">HR: Dashboard</field>
+            <field name="model_id" ref="hr_dashboard_app_ent.model_hr_dashboard"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_dashboard_redirect()</field>
+        </record>
+
+        <menuitem name="HR Dashboard" id="hr_dashboard_menu" action="ir_actions_server_hr_dashboard"/>
+
+        <menuitem name="Announcement" id="hr_announcement" action="hr_announcement_action_window"/>
+    </data>
+</odoo>
